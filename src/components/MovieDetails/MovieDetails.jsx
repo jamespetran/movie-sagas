@@ -2,8 +2,9 @@ import * as React from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import Genre from '../Genre/Genre'
-
+import Genre from '../Genre/Genre';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 
 function MovieDetails() {
   const dispatch = useDispatch();
@@ -28,15 +29,21 @@ function MovieDetails() {
 
   return (
 
-    <div>
+    <div className="movie-details">
       <Link to="/">
         <button>Back to MovieList</button>
       </Link>
-      <h1>Movie Details</h1>
-      <img src={details[0].poster} />
-      <h2>{details[0].title}</h2>
-      <p>{details[0].description}</p>
-      {details[0].genres.map(genre => <Genre genre={genre} /> )}
+      <h1>{details[0].title}</h1>
+      <Grid
+      container spacing={0}>
+        <Grid item xs={4}><img src={details[0].poster} /></Grid>
+        <Grid item xs={8}>
+          <Stack spacing={1}>
+            <p>{details[0].description}</p>
+            <p>{details[0].genres.map(genre => <Genre key={genre} genre={genre} />)}</p>
+          </Stack>
+        </Grid>
+      </Grid>
     </div>
 
   )

@@ -69,7 +69,8 @@ const genres = (state = [], action) => {
 }
 
 // Used to store a single movie's details
-const details = (state = [{title:'', description: ''}], action) => {
+const details = (state = [{title:'', description: '', genres: []}],
+ action) => {
   switch (action.type) {
     case 'SET_DETAILS':
       return action.payload;

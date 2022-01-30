@@ -1,9 +1,7 @@
 function Genre({genre}) {
 
-  
-
   return(
-    <p>{genre}</p>
+    <span className="genre">{genre}</span>
   )
 } 
 

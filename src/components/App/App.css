@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: 0 auto;
 }
 
 
@@ -21,4 +22,14 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.genre{
+  font-style: italic; 
+  margin: 0px 10px;
+  color:darkred;
+}
+body{
+  background-color:aliceblue;
+  font-family: 'Roboto', sans-serif;
 }
