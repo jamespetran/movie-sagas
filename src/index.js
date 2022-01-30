@@ -32,8 +32,9 @@ function* fetchAllMovies() {
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
+const initMovie = {name: 'example', id: 0}
 // Used to store movies returned from the server
-const movies = (state = [], action) => {
+const movies = (state = [initMovie], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
             return action.payload;
