@@ -1,5 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  /* background-color:aliceblue; */
+  background: url('../public/images/curtains.jpeg') no-repeat fixed center;
+
+  font-family: 'Roboto', sans-serif;
 }
