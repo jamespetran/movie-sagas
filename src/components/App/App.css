@@ -2,34 +2,43 @@
   text-align: center;
   margin: 0 auto;
 }
-
-
 .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
 }
-
 .App-title {
   font-size: 1.5em;
 }
-
 .App-intro {
   font-size: large;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .genre{
   font-style: italic; 
+  font-size: 25px;
   margin: 0px 10px;
-  color:darkred;
+  color: rgb(225, 245, 245);
 }
-body{
-  background-color:aliceblue;
-  font-family: 'Roboto', sans-serif;
+.movies{
+  display:flex;
+  flex-flow:row wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+.description{
+  color:cornsilk;
+  font-size: larger;
+  background-color:rgba(138, 63, 78, 0.63);
+  border-radius:25px;
+  padding: 30px;
+}
+.back-arrow{
+  display: flex;
+  flex-flow:row nowrap;
+  align-items: center;
+  margin: 0 auto;
+}
+.back-link{
+  text-decoration: none;
 }
