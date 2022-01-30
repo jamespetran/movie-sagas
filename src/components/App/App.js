@@ -28,7 +28,7 @@ function App() {
         color: 'white',
         backgroundColor:'darkred'
       }}
-      >The Movies Saga</h1>
+      >The Movies Saga<span className="source-link"><a href="https://github.com/jamespetran/movie-sagas">link to source code</a></span></h1>
 
       <Router>
         <Route path="/" exact>
