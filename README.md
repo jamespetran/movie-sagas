@@ -4,6 +4,8 @@
 ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/jamespetran/movie-sagas.svg?style=flat-square)
 ![FORKS](https://img.shields.io/github/forks/jamespetran/movie-sagas.svg?style=social)
 
+[Deployed Application Here](https://dry-bayou-68430.herokuapp.com/)
+
 ## Description
 
 *Duration: January 29-30, 2022*
