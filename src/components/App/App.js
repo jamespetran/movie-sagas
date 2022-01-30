@@ -24,8 +24,11 @@ function App() {
     }}
     className="App">
       <h1
-      style={{color: 'white'}}
-      >The Movies Saga!</h1>
+      style={{
+        color: 'white',
+        backgroundColor:'darkred'
+      }}
+      >The Movies Saga</h1>
 
       <Router>
         <Route path="/" exact>
