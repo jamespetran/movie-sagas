@@ -4,10 +4,25 @@ const pool = require('../modules/pool')
 
 router.get('/details/:id', (req, res) => {
   console.log('details router')
-  const query = `SELECT * FROM movies WHERE id = $1`;
+  const query = `
+  SELECT 
+    m.id,
+    title,
+    poster,
+    description,
+    ARRAY_AGG(g.name) AS genres, 
+    ARRAY_AGG(g.id) AS genre_id
+  FROM "movies" m
+  JOIN movies_genres x
+    ON m.id = x.movie_id
+  JOIN genres g
+    ON x.genre_id = g.id
+  WHERE m.id = $1
+  GROUP BY title, m.id;
+  `;
   const sqlParams = [req.params.id]
   pool.query(query, sqlParams)
-    .then( result => {
+    .then(result => {
       console.log(result.rows)
       res.send(result.rows);
     })
@@ -22,7 +37,7 @@ router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
   pool.query(query)
-    .then( result => {
+    .then(result => {
       res.send(result.rows);
     })
     .catch(err => {
@@ -43,13 +58,13 @@ router.post('/', (req, res) => {
 
   // FIRST QUERY MAKES MOVIE
   pool.query(insertMovieQuery, [req.body.title, req.body.poster, req.body.description])
-  .then(result => {
-    console.log('New Movie Id:', result.rows[0].id); //ID IS HERE!
-    
-    const createdMovieId = result.rows[0].id
+    .then(result => {
+      console.log('New Movie Id:', result.rows[0].id); //ID IS HERE!
 
-    // Now handle the genre reference
-    const insertMovieGenreQuery = `
+      const createdMovieId = result.rows[0].id
+
+      // Now handle the genre reference
+      const insertMovieGenreQuery = `
       INSERT INTO "movies_genres" ("movie_id", "genre_id")
       VALUES  ($1, $2);
       `
@@ -63,11 +78,11 @@ router.post('/', (req, res) => {
         res.sendStatus(500)
       })
 
-// Catch for first query
-  }).catch(err => {
-    console.log(err);
-    res.sendStatus(500)
-  })
+      // Catch for first query
+    }).catch(err => {
+      console.log(err);
+      res.sendStatus(500)
+    })
 })
 
 module.exports = router;

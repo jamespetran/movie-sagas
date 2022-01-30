@@ -15,9 +15,6 @@ function App() {
       <h1>The Movies Saga!</h1>
 
       <Router>
-        <Link to="/">Home!</Link>
-        <Link to="/details/">details!</Link>
-
         <Route path="/" exact>
           <MovieList />
         </Route>
